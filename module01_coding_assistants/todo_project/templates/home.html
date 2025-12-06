@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block title %}Home - TODO App{% endblock %}
+
+{% block content %}
+<h2>My TODOs</h2>
+
+<style>
+    .todo-form {
+        margin: 20px 0;
+        padding: 15px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+    }
+    .todo-form input, .todo-form textarea, .todo-form select {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    .todo-form button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    .todo-form button:hover {
+        background-color: #45a049;
+    }
+    .todo-list {
+        list-style: none;
+        padding: 0;
+    }
+    .todo-item {
+        padding: 15px;
+        margin: 10px 0;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .todo-item.resolved {
+        opacity: 0.6;
+        text-decoration: line-through;
+    }
+    .todo-actions {
+        display: flex;
+        gap: 10px;
+    }
+    .todo-actions a, .todo-actions button {
+        padding: 5px 10px;
+        text-decoration: none;
+        border-radius: 3px;
+        font-size: 14px;
+    }
+    .btn-edit {
+        background-color: #2196F3;
+        color: white;
+    }
+    .btn-delete {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    .btn-resolve {
+        background-color: #FF9800;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    .priority {
+        font-weight: bold;
+        padding: 2px 8px;
+        border-radius: 3px;
+        font-size: 12px;
+    }
+    .priority-high { background-color: #f44336; color: white; }
+    .priority-medium { background-color: #FF9800; color: white; }
+    .priority-low { background-color: #4CAF50; color: white; }
+    .priority-none { background-color: #9E9E9E; color: white; }
+</style>
+
+<!-- Add TODO Form -->
+<div class="todo-form">
+    <h3>Add New TODO</h3>
+    <form method="post" action="{% url 'todo_create' %}">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="Title" required>
+        <textarea name="description" placeholder="Description" rows="3"></textarea>
+        <input type="date" name="due_date">
+        <select name="priority">
+            <option value="high">High Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="low" selected>Low Priority</option>
+            <option value="none">No Priority</option>
+        </select>
+        <button type="submit">Add TODO</button>
+    </form>
+</div>
+
+<!-- TODO List -->
+<ul class="todo-list">
+    {% for todo in todos %}
+    <li class="todo-item {% if todo.is_resolved %}resolved{% endif %}">
+        <div>
+            <strong>{{ todo.title }}</strong>
+            <span class="priority priority-{{ todo.priority }}">{{ todo.get_priority_display }}</span>
+            <p>{{ todo.description }}</p>
+            {% if todo.due_date %}
+            <small>Due: {{ todo.due_date }}</small>
+            {% endif %}
+        </div>
+        <div class="todo-actions">
+            <a href="{% url 'todo_update' todo.id %}" class="btn-edit">Edit</a>
+            {% if not todo.is_resolved %}
+            <form method="post" action="{% url 'todo_toggle' todo.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn-resolve">Mark Resolved</button>
+            </form>
+            {% endif %}
+            <form method="post" action="{% url 'todo_delete' todo.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn-delete" onclick="return confirm('Are you sure?')">Delete</button>
+            </form>
+        </div>
+    </li>
+    {% empty %}
+    <li class="todo-item">No TODOs yet. Add one above!</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
