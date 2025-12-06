@@ -25,7 +25,7 @@ We want to install Django. Ask AI to help you with that.
 
 What's the command you used for that? There could be multiple ways to do it. Put the one that AI suggested in the homework form.
 
-<span style="color: #F28B82"> Django is a Python framework for building web apps. The command that AI suggested to install was "pip install Django"</span>
+> **Note:** Django is a Python framework for building web apps. The command that AI suggested to install was "pip install Django"
 
 ## Question 2: Project and App
 
@@ -40,7 +40,7 @@ What's the file you need to edit for that?
 - `urls.py`
 - `wsgi.py`
 
-<span style="color: #F28B82"> The app "todos" has been addedd to INSTALLED_APPS in settings.py </span>
+> **Note:** The app "todos" has been added to INSTALLED_APPS in settings.py
 
 ## Question 3: Django Models
 
@@ -48,8 +48,7 @@ Let's now proceed to creating models - the mapping from python objects to a rela
 
 For the TODO app, which models do we need? Implement them.
 
-<span style="color: #F28B82"> AI suggested to implement the following models: title, description, due date, resolution status, created and updated dates. I suggested to also add priority (with four levels, from high to low) </span>
-
+> **Note:** AI suggested to implement the following models: title, description, due date, resolution status, created and updated dates. I suggested to also add priority (with four levels, from high to low)
 
 What's the next step you need to take?
 
@@ -58,7 +57,7 @@ What's the next step you need to take?
 - Run migrations
 - Create a makefile
 
-<span style="color: #F28B82"> After defining models in Django, the next step is to run migrations so the database structure matches the Python code. The makemigrations command generates instructions based on the models, and migrate applies those instructions to create the actual database tables. After, the next step will be adding the model to the admin site so we can create and edit TODOs through Django’s built-in admin interface.</span>
+> **Note:** After defining models in Django, the next step is to run migrations so the database structure matches the Python code. The makemigrations command generates instructions based on the models, and migrate applies those instructions to create the actual database tables. After, the next step will be adding the model to the admin site so we can create and edit TODOs through Django's built-in admin interface.
 
 ## Question 4. TODO Logic
 
@@ -69,8 +68,7 @@ Let's now ask AI to implement the logic for the TODO app. Where do we put it?
 - `admin.py`
 - `tests.py`
 
-
-<span style="color: #F28B82"> The logic should go in todos/views.py. This is where you write the functions or classes that handle: displaying the list of TODOs, creating new TODOs, editing existing TODOs, deleting TODOs, marking TODOs as resolved...</span>
+> **Note:** The logic should go in todos/views.py. This is where you write the functions or classes that handle: displaying the list of TODOs, creating new TODOs, editing existing TODOs, deleting TODOs, marking TODOs as resolved...
 
 ## Question 5. Templates
 
@@ -83,10 +81,9 @@ Where do you need to register the directory with the templates?
 - `TEMPLATES['APP_DIRS']` in project's `settings.py`
 - In the app's `urls.py`
 
-<span style="color: #F28B82"> We created a directory at the project root (todo_project) named "templates". This is the standard Django convention: templates at the project root level so they can be shared across all apps.</span>
-
-<span style="color: #F28B82"> The directory with the templates is registered at TEMPLATES['DIRS'] in project's settings.py</span>
-
+> **Note:** We created a directory at the project root (todo_project) named "templates". This is the standard Django convention: templates at the project root level so they can be shared across all apps.
+>
+> The directory with the templates is registered at TEMPLATES['DIRS'] in project's settings.py
 
 ## Question 6. Tests
 
@@ -105,11 +102,11 @@ What's the command you use for running tests in the terminal?
 - `python -m django run_tests`
 - `django-admin test`
 
-<span style="color: #F28B82">The AI defined the following scenarios: 1. Create a TODO; 2. List TODOs; 3. Mark as resolved; 4. Delete a TODO.</span>
-
-<span style="color: #F28B82">The AI run 8 tests, and all passed successfully in three iterations.</span>
-
-<span style="color: #F28B82">The command was "python manage.py test".</span>
+> **Note:** The AI defined the following scenarios: 1. Create a TODO; 2. List TODOs; 3. Mark as resolved; 4. Delete a TODO.
+>
+> The AI run 8 tests, and all passed successfully in three iterations.
+>
+> The command was "python manage.py test".
 
 ## Running the app
 
@@ -119,9 +116,9 @@ Now the application is developed and tested. Run it:
 python manage.py runserver
 ```
 
-Since we asked AI to test everything, it should just work. If it doesn't, iterate with AI until it works. 
+Since we asked AI to test everything, it should just work. If it doesn't, iterate with AI until it works.
 
-<span style="color: #F28B82"> Only one thing wasnt working: when marked "as resolved" there was no change. After one iteration, the AI corrected the issue</span>
+> **Note:** Only one thing wasn't working: when marked "as resolved" there was no change. After one iteration, the AI corrected the issue.
 
 ## Homework URL
 
