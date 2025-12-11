@@ -80,14 +80,15 @@ Now let's make it possible to run both client and server at the same time. Use `
 
 What's the command you have in `package.json` for `npm dev` for running both?
 
-Answer:
-```json
-"dev": "concurrently \"npm run server\" \"npm run client\""
-```
-Or alternatively:
-```json
-"start": "concurrently \"npm run server\" \"npm run client\""
-```
+> [!NOTE]
+> **Answer:**
+> ```json
+> "dev": "concurrently \"npm run server\" \"npm run client\""
+> ```
+> Or alternatively:
+> ```json
+> "start": "concurrently \"npm run server\" \"npm run client\""
+> ```
 
 
 ## Question 4: Syntax Highlighting
@@ -96,10 +97,10 @@ Let's now add support for syntax highlighting for JavaScript and Python.
 
 Which library did AI use for it?
 
-Answer:
-**Monaco Editor** - specifically the `@monaco-editor/react` package (v4.7.0)
-
-This is the same editor that powers VS Code and provides excellent syntax highlighting for JavaScript, Python, R, Java, and many other languages.
+> [!NOTE]
+> **Answer:** Monaco Editor
+>
+> Specifically the `@monaco-editor/react` package (v4.7.0). This is the same editor that powers VS Code and provides excellent syntax highlighting for JavaScript, Python, R, Java, and many other languages.
 
 
 
@@ -111,12 +112,12 @@ For security reasons, we don't want to execute code directly on the server. Inst
 
 Which library did AI use for compiling Python to WASM?
 
-Answer:
-**Pyodide** (v0.23.4)
-
-Pyodide is a port of CPython to WebAssembly that runs Python in the browser. It includes NumPy, Pandas, and many other scientific packages.
-
-Note: For R language execution, we also used **WebR** (`@r-wasm/webr` package).
+> [!NOTE]
+> **Answer:** Pyodide (v0.23.4)
+>
+> Pyodide is a port of CPython to WebAssembly that runs Python in the browser. It includes NumPy, Pandas, and many other scientific packages.
+>
+> **Additional:** For R language execution, we also used **WebR** (`@r-wasm/webr` package).
 
 
 ## Question 6: Containerization
@@ -125,14 +126,14 @@ Now let's containerize our application. Ask AI to help you create a Dockerfile f
 
 What's the base image you used for your Dockerfile?
 
-Answer:
-**node:20-alpine**
-
-We use a multi-stage Docker build:
-- **Stage 1** (frontend build): `node:20-alpine` - Builds the Vite React app
-- **Stage 2** (production): `node:20-alpine` - Runs the Node.js/Express server and serves both API and static frontend files
-
-Note: We upgraded from Node.js 18 to Node.js 20 because Vite v7.2.7 requires Node.js 20.19+ or 22.12+.
+> [!NOTE]
+> **Answer:** node:20-alpine
+>
+> We use a multi-stage Docker build:
+> - **Stage 1** (frontend build): `node:20-alpine` - Builds the Vite React app
+> - **Stage 2** (production): `node:20-alpine` - Runs the Node.js/Express server and serves both API and static frontend files
+>
+> **Important:** We upgraded from Node.js 18 to Node.js 20 because Vite v7.2.7 requires Node.js 20.19+ or 22.12+.
 
 
 ## Question 7: Deployment
@@ -141,18 +142,18 @@ Now let's deploy it. Choose a service to deploy your application.
 
 Which service did you use for deployment?
 
-Answer:
-**Render** (https://render.com)
-
-Render provides:
-- Free tier for testing/demos
-- Native Docker support
-- Automatic HTTPS
-- WebSocket support (for Socket.io)
-- Auto-deployment from Git
-- Infrastructure as Code via `render.yaml`
-
-The application is configured for deployment using the `render.yaml` blueprint file.
+> [!NOTE]
+> **Answer:** Render (https://render.com)
+>
+> Render provides:
+> - Free tier for testing/demos
+> - Native Docker support
+> - Automatic HTTPS
+> - WebSocket support (for Socket.io)
+> - Auto-deployment from Git
+> - Infrastructure as Code via `render.yaml`
+>
+> The application is configured for deployment using the `render.yaml` blueprint file.
 
 
 ## Homework URL
