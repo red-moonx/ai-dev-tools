@@ -42,6 +42,8 @@ What's the initial prompt you gave to AI to start the implementation?
 
 Copy and paste it in the homework form.
 
+Answer:
+I want to build real-time collaborative coding interview platform. It must have the following features: - Create a link and share it with candidates - Allow everyone who connects to edit code in the code panel - Show real-time updates to all connected users - Support syntax highlighting for multiple languages - Execute code safely in the browser And if possible, implement also the following two "bonuses" bonus 1: Built-in Chat Panel; a small text chat box on the side or bottom of the editor. bonus 2: Language Switching with Template Starter Code; A dropdown that lets users switch languages, and loads a minimal starter code snippet (e.g., def main(): for Python, or public class Main {} for Java). Create both frontend and backend. Use react and vite for frontend and express.js for backend
 
 ## Question 2: Integration Tests
 
@@ -54,8 +56,23 @@ Ask AI to write integration tests that check that the interaction between client
 Also it's a good idea to ask it to start creating a `README.md` file with all the commands for running and testing your application.
 
 What's the terminal command you use for executing tests?
+Answer
+npx mocha test/integration.test.js --exit
 
+Answer
+Summary of Integration Tests
+Here is what we have tested and verified:
 
+Code Synchronization (should sync code changes...)
+Verified: When Client A types code, Client B receives the exact same code instantly.
+Result: ✅ Passed
+Real-time Chat (should chat between two clients)
+Verified: When Client A sends a chat message, Client B receives it with the correct text.
+Result: ✅ Passed
+Language Switching (should sync language changes...)
+Verified: When Client A selects a new language (e.g., Python), Client B's editor updates to that language AND loads the correct starter template.
+Result: ✅ Passed
+These tests confirm the "Shared Real-time State" is working for all core features. Code execution is handled locally by the browser (verified manually via the UI), but the coordination of that state is handled and verified by the server tests.
 
 ## Question 3: Running Both Client and Server
 
