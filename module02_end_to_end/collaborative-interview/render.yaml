@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: codeswitch
+    env: docker
+    plan: free  # Change to 'starter' for better performance
+    region: oregon  # or choose: 'frankfurt', 'singapore', 'ohio'
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    
+    # Environment variables
+    envVars:
+      - key: NODE_ENV
+        value: production
+    
+    # Auto-deploy on push to main branch
+    autoDeploy: true
+    
+    # Health check configuration
+    healthCheckPath: /
