@@ -85,7 +85,7 @@ app.use(express.static(clientDistPath));
 
 // SPA fallback - serve index.html for all non-API routes
 // This must be AFTER all other routes
-app.get('*', (req, res) => {
+app.use((req, res) => {
     res.sendFile(path.join(clientDistPath, 'index.html'));
 });
 

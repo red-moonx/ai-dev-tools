@@ -20,6 +20,6 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,  // Disable source maps for production
-    minify: 'terser',  // Use terser for better minification
+    minify: 'esbuild',  // Use esbuild for fast minification (built into Vite)
   },
 })
